@@ -65,11 +65,16 @@ st.markdown("<h1 class='titulo-principal'>AGRO VICENTE</h1>", unsafe_allow_html=
 st.markdown("<p class='subtitulo-principal'>Plataforma de Diagnóstico Tecnológico para Cultivos - Departamento de Santander</p>", unsafe_allow_html=True)
 
 
-# LÓGICA DE CONTROL: CARGA DE API KEY
 
 api_key_actual = None
-if os.path.exists("api_key.txt"):
-    with open("api_key.txt", "r") as f:  # Corrección de modo de lectura 'r'
+
+
+if "api_key" in st.secrets:
+    api_key_actual = st.secrets["api_key"]
+
+
+elif os.path.exists("api_key.txt"):
+    with open("api_key.txt", "r") as f:
         api_key_actual = f.read().strip()
 
 
